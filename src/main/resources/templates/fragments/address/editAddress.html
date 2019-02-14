@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sg="http://www.sonorys.at">
+	
+<head>
+</head>
+
+<body>
+<div th:fragment="editAddress"  id="page-wrapper" class="section">
+	<form th:object="${addressEdit}" th:method="post" th:action="@{/editAddress/{addressId}}">		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<a class="btn btn-menu-spec">
+					<span class="fa fa-envelope"></span>
+					<span>Edit  Address</span>
+				</a>
+			</div>
+			<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Address name</label>
+							<input class="form-control" th:field="*{addressName}"></input>
+						</div>
+					</div>		
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>County</label>
+							<input class="form-control" th:field="*{county}"></input>
+						</div>
+					</div>		
+					<div class="row">
+						<div class="col-md-3 form-group">
+							<label>Street</label>
+							<input class="form-control" th:field="*{street}"></input>
+						</div>
+					</div>		
+					<div class="row">
+						<div class="col-md-5 form-group">
+							<button class="btn btn-default" type="submit">Create</button>
+						</div>
+					</div>
+			</div>
+		</div>
+	</form>
+		
+	</div>
+
+</body>
+</html>

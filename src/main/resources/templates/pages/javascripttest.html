@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Java script</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css"
+		href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" th:href="@{/css/main.css}"
+		href="../../css/main.css" />
+</head>
+<body>
+
+<button type="button" onclick="getPrint()">
+		Do you want to show the text from js function? Click here
+</button>
+<p id ="testId"></p>
+<p>n</p>
+<!-- test 1  -->
+<script>
+</script>
+<script>
+function isInteger(num) {
+	return num%1===0;
+}
+function getTest(num) {
+	if(isInteger(num)) {
+		document.getElementById('testId').innerHTML="num is integer";
+	} else {
+		document.getElementById('testId').innerHTML="num  is  not  integer";
+	}
+}
+
+function getSumUpperFor10(num) {
+	document.getElementById('testId').innerHTML= num +10;
+}
+
+function getPrint() {
+	window.print();
+}
+
+function getAreaOfTriangle(a, b, c) {
+	var s = (a + b +c) /2;
+	var area = Math.sqrt(s *((s - a) * (s-b)*(s-c)));
+	
+	document.getElementById('id1').innerHTML=area;
+}
+
+function() {
+	
+}
+
+</script>	
+<p id ="id1"></p>
+
+<button type="button" onclick="getAreaOfTriangle(2,3,4)">
+Test area</button>
+	
+	
+<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

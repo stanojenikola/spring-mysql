@@ -1,0 +1,15 @@
+com\javasampleapproach\mysql\model\Address.class
+com\javasampleapproach\mysql\repo\CustomerRepository.class
+com\javasampleapproach\mysql\dto\AddressListDTO.class
+com\javasampleapproach\mysql\orikamapperIMPL\AddressOrikaMapper.class
+com\javasampleapproach\mysql\spring\sterotype\Mapper.class
+com\javasampleapproach\mysql\repo\AddressRepository.class
+com\javasampleapproach\mysql\orikamapperAPI\AddressOrikaMapperAPI.class
+com\javasampleapproach\mysql\orikamapperbase\OrikaMapperFactory.class
+com\javasampleapproach\mysql\api\AddressAPI.class
+com\javasampleapproach\mysql\controller\WebController.class
+com\javasampleapproach\mysql\guicontroller\HomeController.class
+com\javasampleapproach\mysql\bo\AddressBO.class
+com\javasampleapproach\mysql\model\Customer.class
+com\javasampleapproach\mysql\dto\AddressCreateDTO.class
+com\javasampleapproach\mysql\SpringJpaMySqlApplication.class

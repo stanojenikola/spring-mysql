@@ -1,0 +1,77 @@
+<html>
+<head lang = "en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+</head>
+<body>
+	<div th:fragment="homePage" id="page-wrapper" class="section">
+		<div class="jumbotron text-center">
+			  <h1>Nikola Java test</h1>
+			  <p>Resize this responsive page to see the effect!</p> 
+		</div>
+		<div class="panel panel-default"><!-- start of panel heading default -->
+				<div class="panel-haading">
+							<div class="pull-right">
+				            	<div class="btn-group">
+				            		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				             			<span>Address action</span>
+				             			<span class="caret"></span>
+				            		</button>
+				            		<ul class="dropdown-menu pull-right" role="menu">
+				              			<li>
+				              				<a >abs</a>
+				              			</li>	
+									</ul>
+								</div>
+							</div>
+					</div>
+			</div><!-- End of panel haading -->
+			
+			
+			
+			
+			
+			<div class="container"><!-- js test -->
+				<button type="button"
+					onclick="document.getElementById('demo').innerHTML = Date()">
+						Click me to display Date and Time.</button>
+				<p id="demo"></p>
+			</div>
+			<div class="container">
+				<button type ="button" onclick="document.getElementById('testId').innerHTML=Date()">
+				click
+				</button>
+				<p id="testId"></p>
+			</div>
+			<div class="container">
+					<button type="button" 
+					onclick="document.getElementById('id2').innerHTML='Hello javascript'">clickk2
+					</button>
+				</div>
+				<div id="id2"></div>
+			<div class="container">
+			
+				<div class="col-sm-12">
+					<table class="table table-dark">
+						  <thead>
+						    <tr>
+						      <th scope="col" >Id</th>
+						      <th scope="col">Name</th>
+						      <th scope="col">Street</th>
+						      <th scope="col">Country</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr th:each="addr: ${address}">
+						      <th scope="row" th:text="${addr.addressId}"></th>
+						      <td th:text="${addr.addressName}"></td>
+						      <td th:text="${addr.county}"></td>
+						      <td th:text="${addr.street}"></td>
+						    </tr>
+						  </tbody>
+					</table>
+				</div>
+			</div>
+			
+	</div>
+</body>
+</html>
