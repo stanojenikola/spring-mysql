@@ -35,18 +35,18 @@ public class AddressBO implements AddressAPI{
 		return address;	
 	}
 	
-	@Transactional
+	@Transactional(readOnly =true)
 	@Override
 	public List<AddressListDTO> getAllAddress() {
 			List<Address>address = (List<Address>) addressRepository.findAll();
 		return	addressOrikaMapper.getAddressListDTO(address);
 
 	}
+	
 	@Transactional(readOnly =true)
 	@Override
 	public AddressDetailsDTO getAddressDetails(long id) throws Exception {
 		Address address =findAddressDetails(id);
-		
 		AddressDetailsDTO addressDetailsDTO =addressOrikaMapper.getAddressDetailsDTOfromAddress(address);
 		return addressDetailsDTO;
 	}
@@ -70,6 +70,14 @@ public class AddressBO implements AddressAPI{
 		
 		 address = addressOrikaMapper.getAddressEditDTOtoAddress(addressEditDTO,address);
 		 addressRepository.save(address);
+	}
+
+	@Transactional
+	@Override
+	public void deleteAddress(Long addressId) {
+		addressRepository.delete(addressId);
+		return;
+		
 	}
 	
 }

@@ -1,1 +1,3 @@
+com\javasampleapproach\mysql\address\AddressTestFactory.class
+com\javasampleapproach\mysql\address\CreateAddressTest.class
 com\javasampleapproach\mysql\SpringJpaMySqlApplicationTests.class

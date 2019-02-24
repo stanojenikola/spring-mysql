@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.javasampleapproach.mysql.address.CreateAddressTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 8.3 sec <<< FAILURE! - in com.javasampleapproach.mysql.address.CreateAddressTest
+sholdMapFields(com.javasampleapproach.mysql.address.CreateAddressTest)  Time elapsed: 0.039 sec  <<< ERROR!
+java.lang.NullPointerException: null
+	at com.javasampleapproach.mysql.address.CreateAddressTest.sholdMapFields(CreateAddressTest.java:48)
+

@@ -15,5 +15,6 @@ public Address createAddress(AddressCreateDTO addressCreateDTO);
 Address findAddressDetails(long addressId) throws Exception;
 AddressDetailsDTO getAddressDetails(long id) throws Exception;
 void editAddress(AddressEditDTO addressEditDTO) throws Exception;
+public void deleteAddress(Long addressId);
 
 }

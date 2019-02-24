@@ -1,11 +1,10 @@
 package com.javasampleapproach.mysql.dto.address;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 public class AddressCreateDTO {
 	
-	private long addressId;
+	private Long addressId;
 	@NotNull
 	private String addressName;
 
@@ -14,11 +13,13 @@ public class AddressCreateDTO {
 	@NotNull
 	private String street;
 
-	public long getAddressId() {
+
+
+	public Long getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(long addressId) {
+	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
 	}
 

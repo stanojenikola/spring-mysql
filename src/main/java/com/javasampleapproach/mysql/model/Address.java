@@ -22,7 +22,7 @@ public class Address implements Serializable {
 	@Id
 	@Column(name="address_id", nullable=false)
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long addressId;
+	private Long addressId;
 	
 	@NotNull
 	@Column(name="address_name" ,nullable=false)
@@ -36,11 +36,11 @@ public class Address implements Serializable {
 	@Column(nullable=false)
 	private String county;
 
-	public long getAddressId() {
+	public Long getAddressId() {
 		return addressId;
 	}
 
-	public void setAddressId(long addressId) {
+	public void setAddressId(Long addressId) {
 		this.addressId = addressId;
 	}
 

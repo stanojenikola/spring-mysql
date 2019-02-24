@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,17 +23,34 @@ import com.javasampleapproach.mysql.dto.address.AddressEditDTO;
 public class AddressController {
 
 	private static final String PAGE_CREATE_ADDRESS= "/pages/address/createaddress";
-	private static final String PAGE_EDIT_ADDRESS ="/pages/address/editaddress";
+	private static final String PAGE_EDIT_ADDRESS = "/pages/address/editaddress";
+	private static final String PAGE_DETAILS_ADDRESS = "/pages/address/detailsaddress";
 	
 	@Autowired
 	private AddressAPI addressAPI;
 	
+	@DeleteMapping("/delete/{id}")
+	public String getDelete(
+			@PathVariable("id") Long addressId) {
+		
+		addressAPI.deleteAddress( addressId);
+		return "redirect:/home";
+	}
 	@GetMapping("/createAddress")
 	public String getCreateAddress(Model model) {
 		AddressCreateDTO addressCreateDTO = new AddressCreateDTO();
 		model.addAttribute("address", addressCreateDTO);
 		
 		return PAGE_CREATE_ADDRESS;
+	}
+	
+	@GetMapping("/detailsAddress/{id}")
+	public String getAddressDetails(Model model,
+			@PathVariable("id") Long id) throws Exception {
+		
+		model.addAttribute("details", addressAPI.getAddressDetails(id));
+		
+		return PAGE_DETAILS_ADDRESS;
 	}
 	
 	@PostMapping("/createAddress")
@@ -50,26 +68,26 @@ public class AddressController {
 		}
 	}
 	//edit dto
-	@GetMapping(value="/editAddress/{addressId}")
+	@GetMapping("/editAddress/{addressId}")
 	public String getEditAddress(Model model, 
-			@PathVariable("addressId") long addressId) throws Exception {
+			@PathVariable("addressId") Long addressId) throws Exception {
 		AddressDetailsDTO addressDetailsDTO = addressAPI.getAddressDetails(addressId);
-		model.addAttribute("addressDetails", addressDetailsDTO);
+		model.addAttribute("address", addressDetailsDTO);
 		
 		return PAGE_EDIT_ADDRESS;
 	}
 	
 	@PutMapping("/editAddress/{addressId}")
 	public String postEditAddress(Model model, 
-			@PathVariable("addressId") long addressId,
-			@Valid @ModelAttribute("addressDetails") AddressEditDTO addressEditDTO, BindingResult bindingResult) throws Exception {
+			@PathVariable("addressId") Long addressId,
+			@Valid @ModelAttribute("address") AddressEditDTO addressEditDTO, BindingResult bindingResult) throws Exception {
 		
 		if(!bindingResult.hasErrors()) {
 			this.addressAPI.editAddress(addressEditDTO);
 			return "redirect:/home";
 		}
 		
-		model.addAttribute("addressEdit", addressEditDTO);
+		model.addAttribute("address", addressEditDTO);
 		return PAGE_EDIT_ADDRESS;
 	}
 	

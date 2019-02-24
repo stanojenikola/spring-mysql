@@ -1,11 +1,14 @@
 package com.javasampleapproach.mysql.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.javasampleapproach.mysql.model.Address;
 import com.javasampleapproach.mysql.model.Customer;
+import com.javasampleapproach.mysql.repo.AddressRepository;
 import com.javasampleapproach.mysql.repo.CustomerRepository;
 
 
@@ -14,6 +17,10 @@ public class WebController {
 	@Autowired
 	CustomerRepository repository;
 	
+	@Autowired
+	AddressRepository addressRepository;
+	
+	
 	@RequestMapping("/save")
 	public String process(){
 		repository.save(new Customer("Jack", "Smith"));
@@ -21,9 +28,19 @@ public class WebController {
 		repository.save(new Customer("Kim", "Smith"));
 		repository.save(new Customer("David", "Williams"));
 		repository.save(new Customer("Peter", "Davis"));
-		return "Done";
+		
+		return repository.findAll().toString();
+		
 	}
 	
+	@GetMapping("/alladdress")
+	public String findAllAddressRest() {
+		String result="<html>";
+		for(Address add:	addressRepository.findAll()) {
+			result += "<div>" +add.toString() + "</div>";
+		}
+		return result + "</html>";
+	}
 	
 	@RequestMapping("/findall")
 	public String findAll(){
@@ -42,6 +59,8 @@ public class WebController {
 		result = repository.findOne(id).toString();
 		return result;
 	}
+	
+	
 	
 	@RequestMapping("/findbylastname")
 	public String fetchDataByLastName(@RequestParam("lastname") String lastName){

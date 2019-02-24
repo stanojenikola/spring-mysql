@@ -3,51 +3,38 @@
 	xmlns:th="http://www.thymeleaf.org">
 </head>
 <body>
-	<div th:fragment="homePage" id="page-wrapper" class="section">
-		<div class="jumbotron text-center">
-			  <h1>Nikola Java test</h1>
-			  <p>Resize this responsive page to see the effect!</p> 
-		</div>
-		<div class="panel panel-default"><!-- start of panel heading default -->
-				<div class="panel-haading">
-							<div class="pull-right">
-				            	<div class="btn-group">
-				            		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-				             			<span>Address action</span>
-				             			<span class="caret"></span>
-				            		</button>
-				            		<ul class="dropdown-menu pull-right" role="menu">
-				              			<li>
-				              				<a >abs</a>
-				              			</li>	
-									</ul>
-								</div>
-							</div>
-					</div>
-			</div><!-- End of panel haading -->
-			
-			
-			
-			
-			
-			<div class="container"><!-- js test -->
-				<button type="button"
-					onclick="document.getElementById('demo').innerHTML = Date()">
-						Click me to display Date and Time.</button>
-				<p id="demo"></p>
-			</div>
-			<div class="container">
-				<button type ="button" onclick="document.getElementById('testId').innerHTML=Date()">
-				click
-				</button>
-				<p id="testId"></p>
-			</div>
-			<div class="container">
-					<button type="button" 
-					onclick="document.getElementById('id2').innerHTML='Hello javascript'">clickk2
-					</button>
-				</div>
-				<div id="id2"></div>
+<div th:fragment="homePage" id="page-wrapper" class="section">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+	  <!-- Brand -->
+	  <a class="navbar-brand" href="#">Nikola Testing</a>
+	
+	  <!-- Toggler/collapsibe Button -->
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <!-- Navbar links -->
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="nav-link" th:href="@{/createAddress}">Create Address</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Link</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="#">Link</a>
+	      </li> 
+	    </ul>
+	  </div> 
+	</nav>
+<div class="container"><!-- js test -->
+	<button type="button"
+		onclick="document.getElementById('demo').innerHTML = Date()">
+			Click me to display Date and Time.</button>
+	<p id="demo"></p>
+</div>
+	<div id="id2"></div>
 			<div class="container">
 			
 				<div class="col-sm-12">
@@ -62,7 +49,10 @@
 						  </thead>
 						  <tbody>
 						    <tr th:each="addr: ${address}">
-						      <th scope="row" th:text="${addr.addressId}"></th>
+						      <th scope="row" >
+						      		<a th:text="${addr.addressId}" th:href="@{/detailsAddress/{id} (id =${addr.addressId})}"></a>
+						   
+						      </th>
 						      <td th:text="${addr.addressName}"></td>
 						      <td th:text="${addr.county}"></td>
 						      <td th:text="${addr.street}"></td>
